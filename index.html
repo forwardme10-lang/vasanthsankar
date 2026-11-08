@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--HEAD-START-->
+<title>Vasanth Sankar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio of Vasanth Sankar, a product designer and product manager who builds products from scratch and rides bikes up hills.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single long route down the page. Wide left-aligned type, one bold yellow blaze,
+   topographic contours behind the hero, bike-computer data panels set in mono. */
+:root{
+  --bg:#EEF3EC;
+  --bg-2:#E1E9DF;
+  --bg-3:#D4DFD2;
+  --fg:#132019;
+  --fg-2:#4D5F55;
+  --fg-3:#7D8E84;
+  --line:#C6D3C7;
+  --panel:#132019;
+  --panel-fg:#EEF3EC;
+  --panel-fg-2:#9FB3A6;
+  --accent:#F2B705;
+  --accent-ink:#1E1800;
+  --route:#1F4FD8;
+  --contour:rgba(19,32,25,.16);
+  --shadow:0 24px 60px -30px rgba(19,32,25,.35);
+  --font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wrap:1180px;
+  --r:4px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1511; --bg-2:#132019; --bg-3:#1B2B23;
+    --fg:#E8EFE9; --fg-2:#A7B9AD; --fg-3:#6F8277; --line:#243830;
+    --panel:#E8EFE9; --panel-fg:#0C1511; --panel-fg-2:#4D5F55;
+    --accent:#F7C53A; --accent-ink:#1E1800; --route:#7D98FF;
+    --contour:rgba(232,239,233,.13);
+    --shadow:0 24px 60px -30px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1511; --bg-2:#132019; --bg-3:#1B2B23;
+  --fg:#E8EFE9; --fg-2:#A7B9AD; --fg-3:#6F8277; --line:#243830;
+  --panel:#E8EFE9; --panel-fg:#0C1511; --panel-fg-2:#4D5F55;
+  --accent:#F7C53A; --accent-ink:#1E1800; --route:#7D98FF;
+  --contour:rgba(232,239,233,.13);
+  --shadow:0 24px 60px -30px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--font-body);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img,svg,canvas{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);text-wrap:balance;font-weight:500;letter-spacing:-.02em}
+p{margin:0}
+.wrap{
+  max-width:var(--wrap);margin-inline:auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.mono{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-2)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:9;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-weight:600;letter-spacing:-.01em}
+.brand .blaze{width:14px;height:22px;background:var(--accent);border-radius:2px;position:relative;flex:none}
+.brand .blaze::after{content:"";position:absolute;inset:auto 0 0;height:7px;background:var(--fg);border-radius:0 0 2px 2px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.6rem}
+.nav li a{font-size:.92rem;color:var(--fg-2);padding:.4rem 0;border-bottom:1px solid transparent}
+.nav li a:hover{color:var(--fg);border-bottom-color:var(--accent)}
+.nav .status{display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);white-space:nowrap}
+.nav .status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:3rem;align-items:end;padding-block:4.5rem 4rem}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem .7rem;margin-bottom:1.6rem}
+.eyebrow .mono{white-space:nowrap}
+.eyebrow .mono{color:var(--fg-2)}
+.eyebrow .sep{width:28px;height:1px;background:var(--fg-3)}
+.hero h1{
+  font-size:clamp(2.5rem,6.2vw,5.4rem);line-height:.98;font-weight:500;
+  font-variation-settings:"opsz" 96;letter-spacing:-.035em;max-width:14ch;
+}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent) 62%,var(--accent) 92%,transparent 92%);padding:0 .06em}
+.hero .lede{margin-top:1.8rem;max-width:52ch;font-size:1.15rem;color:var(--fg-2)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.25rem;border-radius:999px;
+  font-weight:500;font-size:.95rem;border:1px solid var(--fg);transition:transform .2s ease,background .2s ease,color .2s ease;
+  cursor:pointer;background:transparent;color:var(--fg);font-family:inherit;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--fg);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn svg{width:16px;height:16px}
+
+/* bike computer card */
+.computer{
+  background:var(--panel);color:var(--panel-fg);border-radius:14px;padding:1.25rem 1.35rem 1.1rem;
+  font-family:var(--font-mono);box-shadow:var(--shadow);position:relative;overflow:hidden;
+  max-width:420px;justify-self:end;width:100%;
+}
+.computer::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent 0,transparent calc(100% - 1px),rgba(255,255,255,.06) calc(100% - 1px)) 0 0/24px 24px,
+  linear-gradient(0deg,transparent 0,transparent calc(100% - 1px),rgba(255,255,255,.06) calc(100% - 1px)) 0 0/24px 24px;
+  mask:linear-gradient(180deg,rgba(0,0,0,.6),transparent 70%);-webkit-mask:linear-gradient(180deg,rgba(0,0,0,.6),transparent 70%);pointer-events:none}
+.computer>*{position:relative}
+.computer .head{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--panel-fg-2)}
+.computer .head b{color:var(--accent);font-weight:500}
+.computer .title{font-family:var(--font-display);font-size:1.35rem;font-weight:500;letter-spacing:-.01em;margin:.55rem 0 .9rem}
+.computer .grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem}
+.computer .grid .lab{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--panel-fg-2)}
+.computer .grid .val{font-size:1.55rem;line-height:1.1;letter-spacing:-.02em;margin-top:.15rem}
+.computer .grid .val small{font-size:.75rem;color:var(--panel-fg-2);margin-left:.2rem;letter-spacing:0}
+.computer svg{margin-top:1rem;width:100%;height:56px}
+.computer .foot{margin-top:.8rem;padding-top:.7rem;border-top:1px solid color-mix(in srgb,var(--panel-fg) 18%,transparent);font-size:.72rem;color:var(--panel-fg-2);display:flex;justify-content:space-between;gap:1rem}
+.computer .foot span:last-child{color:var(--panel-fg)}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:2.4rem;padding-block:3.2rem 3rem}
+  .computer{justify-self:start;max-width:100%}
+}
+
+/* ---------- facts strip ---------- */
+.strip{border-bottom:1px solid var(--line);background:var(--bg-2)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.strip .fact{padding:1.2rem 1.2rem 1.2rem 0;border-right:1px solid var(--line);margin-right:1.2rem}
+.strip .fact:last-child{border-right:0;margin-right:0}
+.strip .lab{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+.strip .val{font-family:var(--font-display);font-size:1.25rem;margin-top:.2rem;letter-spacing:-.01em}
+@media (max-width:760px){
+  .strip .wrap{grid-template-columns:1fr 1fr}
+  .strip .fact:nth-child(2){border-right:0;margin-right:0}
+  .strip .fact:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+/* ---------- section scaffolding ---------- */
+.section{padding-block:6rem}
+.section + .section{border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:2rem;align-items:start;margin-bottom:3.2rem}
+.sec-head .mono{display:flex;align-items:center;gap:.6rem}
+.sec-head .mono::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--fg);box-sizing:border-box}
+.sec-head h2{font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.08;letter-spacing:-.03em}
+.sec-head p{color:var(--fg-2);max-width:60ch;margin-top:.9rem;font-size:1.05rem}
+@media (max-width:900px){.sec-head{grid-template-columns:1fr;gap:1rem;margin-bottom:2.4rem}}
+
+/* ---------- two hats ---------- */
+.hats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r)}
+.hat{padding:2rem 1.8rem 2.2rem;border-right:1px solid var(--line);min-width:0}
+.hat:last-child{border-right:0}
+.hat .mono{display:flex;align-items:center;gap:.6rem;margin-bottom:1.3rem}
+.hat .mono svg{width:18px;height:18px;color:var(--fg)}
+.hat h3{font-size:1.5rem;margin-bottom:.8rem;letter-spacing:-.02em}
+.hat p{color:var(--fg-2);font-size:1rem}
+.hat ul{list-style:none;margin:1.3rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.hat li{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.03em;padding:.35rem .6rem;border:1px solid var(--line);border-radius:999px;color:var(--fg-2)}
+@media (max-width:900px){
+  .hats{grid-template-columns:1fr}
+  .hat{border-right:0;border-bottom:1px solid var(--line)}
+  .hat:last-child{border-bottom:0}
+}
+
+/* ---------- work ---------- */
+.work-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.card{
+  display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--fg-3)}
+.thumb{aspect-ratio:4/3;max-width:100%;background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.thumb svg{position:absolute;inset:0;width:100%;height:100%}
+.card .body{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.card .meta{display:flex;justify-content:space-between;gap:1rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+.card h3{font-size:1.35rem;letter-spacing:-.02em}
+.card p{color:var(--fg-2);font-size:.98rem}
+.card .outcome{margin-top:auto;padding-top:1rem;border-top:1px dashed var(--line);display:flex;align-items:baseline;gap:.6rem}
+.card .outcome b{font-family:var(--font-display);font-size:1.6rem;font-weight:500;letter-spacing:-.03em}
+.card .outcome span{font-size:.85rem;color:var(--fg-2)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tags span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--fg-2);padding:.25rem .5rem;background:var(--bg-2);border-radius:3px}
+@media (max-width:1000px){.work-list{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){.work-list{grid-template-columns:1fr}}
+
+/* ---------- approach (route with waypoints) ---------- */
+.route{list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.2rem;padding-top:2.4rem}
+.route::before{content:"";position:absolute;left:8px;right:8px;top:calc(2.4rem + 7px);height:2px;background:repeating-linear-gradient(90deg,var(--route) 0 10px,transparent 10px 16px);opacity:.9}
+.wp{position:relative;min-width:0;padding-top:1.6rem}
+.wp::before{content:"";position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--route);box-sizing:border-box}
+.wp:first-child::before,.wp:last-child::before{background:var(--route)}
+.wp .k{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;color:var(--fg-3);text-transform:uppercase}
+.wp h3{font-size:1.15rem;margin:.3rem 0 .5rem;letter-spacing:-.015em}
+.wp p{font-size:.92rem;color:var(--fg-2)}
+@media (max-width:1000px){
+  .route{grid-template-columns:1fr 1fr 1fr}
+  .route::before{display:none}
+}
+@media (max-width:620px){
+  .route{grid-template-columns:1fr;gap:0;padding-top:0}
+  .route::after{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(180deg,var(--route) 0 10px,transparent 10px 16px)}
+  .wp{padding:0 0 2rem 2.2rem}
+  .wp::before{left:0;top:4px}
+}
+
+/* ---------- outside ---------- */
+.outside{background:var(--bg-2)}
+.profile{
+  border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:1.4rem 1.4rem 1rem;margin-bottom:1.5rem;
+}
+.profile .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem .8rem;align-items:baseline;margin-bottom:1rem}
+.profile .top h3{font-size:1.3rem;letter-spacing:-.02em}
+.profile .top .mono{text-transform:none;letter-spacing:0;font-size:.8rem}
+.profile svg{width:100%;height:auto}
+.profile .legend{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:.6rem;font-family:var(--font-mono);font-size:.72rem;color:var(--fg-3)}
+.profile .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--route);margin-right:.4rem;vertical-align:-1px}
+.profile .legend i.a{background:var(--accent)}
+.out-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.out{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:1.5rem 1.5rem 1.6rem;min-width:0;display:flex;flex-direction:column;gap:1rem}
+.out .mono{display:flex;align-items:center;gap:.5rem}
+.out h3{font-size:1.35rem;letter-spacing:-.02em}
+.out p{color:var(--fg-2);font-size:.97rem}
+.stat-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1rem}
+.stat-list .lab{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+.stat-list .val{font-family:var(--font-display);font-size:1.45rem;letter-spacing:-.02em;line-height:1.1}
+.stat-list .val small{font-size:.8rem;color:var(--fg-2);margin-left:.15rem;font-family:var(--font-mono)}
+.places{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.places li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.places li:last-child{border-bottom:0}
+.places .coord{font-family:var(--font-mono);font-size:.72rem;color:var(--fg-3);white-space:nowrap}
+.notes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.9rem}
+.notes li{padding-left:1.1rem;position:relative;font-size:.95rem;color:var(--fg-2)}
+.notes li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--accent);border-radius:1px}
+.notes li b{color:var(--fg);font-weight:500}
+@media (max-width:1000px){.out-grid{grid-template-columns:1fr}}
+
+/* ---------- design notes ---------- */
+.likes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.2rem}
+.like{min-width:0;padding-top:1rem;border-top:2px solid var(--fg)}
+.like .k{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;color:var(--fg-3);text-transform:uppercase}
+.like h3{font-size:1.1rem;margin:.4rem 0 .5rem;letter-spacing:-.01em}
+.like p{font-size:.9rem;color:var(--fg-2)}
+@media (max-width:1000px){.likes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.likes{grid-template-columns:1fr 1fr}}
+
+/* ---------- contact ---------- */
+.contact{background:var(--panel);color:var(--panel-fg)}
+.contact .wrap{padding-block:6rem 4rem;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:3rem;align-items:end}
+.contact h2{font-size:clamp(2.4rem,6vw,5rem);line-height:.98;letter-spacing:-.035em;font-variation-settings:"opsz" 96}
+.contact h2 em{font-style:normal;color:var(--accent)}
+.contact p{color:var(--panel-fg-2);margin-top:1.4rem;max-width:48ch;font-size:1.08rem}
+.email{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;margin-top:2rem}
+.email code{font-family:var(--font-mono);font-size:1.05rem;padding:.7rem 1rem;border:1px solid color-mix(in srgb,var(--panel-fg) 25%,transparent);border-radius:8px;user-select:all;word-break:break-all}
+.email button{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;
+  background:var(--accent);color:var(--accent-ink);border:0;padding:.85rem 1.1rem;border-radius:8px;transition:transform .15s ease;
+}
+.email button:hover{transform:translateY(-1px)}
+.links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+.links li{border-bottom:1px solid color-mix(in srgb,var(--panel-fg) 18%,transparent)}
+.links a{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0;font-size:1rem;color:var(--panel-fg);transition:padding-left .2s ease}
+.links a:hover{padding-left:.4rem;color:var(--accent)}
+.links small{font-family:var(--font-mono);font-size:.7rem;color:var(--panel-fg-2);letter-spacing:.05em}
+.footer{background:var(--panel);color:var(--panel-fg-2);border-top:1px solid color-mix(in srgb,var(--panel-fg) 14%,transparent)}
+.footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem 2rem;padding-block:1.4rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.03em}
+@media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:2.4rem;padding-block:4.5rem 3rem}}
+
+/* ---------- motion ---------- */
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.26s}
+@keyframes rise{from{transform:translateY(18px)}to{transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){
+  .rise{animation:none}
+  .card,.btn,.links a,.email button{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<!--HEAD-END-->
+</head>
+<body>
+<!--BODY-START-->
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Vasanth Sankar, home"><span class="blaze" aria-hidden="true"></span>Vasanth Sankar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#outside">Outside</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="status"><i aria-hidden="true"></i>Open to 0→1 work</div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="hero-h">
+  <canvas id="contours" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow rise">
+        <span class="mono">Product designer</span><span class="sep" aria-hidden="true"></span>
+        <span class="mono">Product manager</span><span class="sep" aria-hidden="true"></span>
+        <span class="mono">Cyclist</span>
+      </div>
+      <h1 id="hero-h" class="rise d1">Blank page to shipped product. Then a <em>long ride</em> to think about the next one.</h1>
+      <p class="lede rise d2">I'm Vasanth. I design products and I run them as a product manager, usually both at once, usually from scratch. I like the messy early part: finding the real problem, drawing the first screens, and owning the roadmap until something works for people.</p>
+      <div class="cta rise d3">
+        <a class="btn primary" href="#work">See selected work
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn" href="#contact">Say hello</a>
+      </div>
+    </div>
+
+    <aside class="computer rise d2" aria-label="Most recent ride">
+      <div class="head"><span>Last ride · Sun 02 Nov</span><b>● REC</b></div>
+      <div class="title">Yelagiri climb loop</div>
+      <div class="grid num">
+        <div><div class="lab">Distance</div><div class="val">84.2<small>km</small></div></div>
+        <div><div class="lab">Elevation</div><div class="val">1,120<small>m ↑</small></div></div>
+        <div><div class="lab">Moving time</div><div class="val">3:41<small>h</small></div></div>
+        <div><div class="lab">Avg speed</div><div class="val">22.8<small>km/h</small></div></div>
+      </div>
+      <svg id="spark" viewBox="0 0 360 56" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="foot"><span>Thinking about</span><span>Onboarding for Trailhead</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== FACTS ===== -->
+<section class="strip" aria-label="At a glance">
+  <div class="wrap">
+    <div class="fact"><div class="lab">Based in</div><div class="val">Chennai, India</div></div>
+    <div class="fact"><div class="lab">Years building</div><div class="val num">8+</div></div>
+    <div class="fact"><div class="lab">Products from zero</div><div class="val num">4 shipped</div></div>
+    <div class="fact"><div class="lab">Kilometres this year</div><div class="val num">4,860 km</div></div>
+  </div>
+</section>
+
+<!-- ===== TWO HATS ===== -->
+<section class="section" aria-labelledby="hats-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Two hats, one head</span>
+      <div>
+        <h2 id="hats-h">Designer and product manager are the same job seen from two chairs.</h2>
+        <p>One asks "what should this feel like?" and the other asks "is this worth building, and when?" I move between them freely, which keeps the roadmap honest and the screens grounded in something real.</p>
+      </div>
+    </div>
+    <div class="hats">
+      <article class="hat">
+        <div class="mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4zM13 7l3 3"/></svg>As a designer</div>
+        <h3>I draw to understand.</h3>
+        <p>Research, flows, interface, and the words on the screen. I care about the second-week experience as much as the first-minute one, and I prototype early enough that the team can argue with something real.</p>
+        <ul><li>Research</li><li>Flows</li><li>UI systems</li><li>Prototyping</li><li>UX writing</li></ul>
+      </article>
+      <article class="hat">
+        <div class="mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8M15 8h5v5"/></svg>As a product manager</div>
+        <h3>I decide what not to build.</h3>
+        <p>Problem framing, prioritisation, metrics, and the unglamorous work of saying no kindly. I write the one-pager before the backlog, and I keep a close loop between what we shipped and what the numbers say.</p>
+        <ul><li>Discovery</li><li>Roadmaps</li><li>Metrics</li><li>Experiments</li><li>Go-to-market</li></ul>
+      </article>
+      <article class="hat">
+        <div class="mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg>As a builder</div>
+        <h3>I start from nothing, happily.</h3>
+        <p>The blank page is my favourite part. I've taken four products from a conversation to a first paying user, pulling together design, scrappy code, and a lot of listening along the way.</p>
+        <ul><li>0→1</li><li>MVP scoping</li><li>No-code + code</li><li>Launches</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section class="section" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Selected work</span>
+      <div>
+        <h2 id="work-h">Three products, three different starting lines.</h2>
+        <p>A side project that found its riders, a B2B tool that needed a better first day, and a design system built while the product was still moving. Each one taught me something about starting.</p>
+      </div>
+    </div>
+
+    <div class="work-list">
+      <a class="card" href="#contact" aria-label="Trailhead case study">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <defs><pattern id="ctr" width="400" height="300" patternUnits="userSpaceOnUse">
+              <path d="M-20 240c60-40 90-110 160-120s110 60 180 30 70-90 100-110" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+              <path d="M-20 200c70-30 100-90 170-100s100 50 170 20 60-70 100-90" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+              <path d="M-20 280c60-50 110-120 180-140s120 70 180 40 60-100 100-130" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+              <path d="M-20 160c80-20 110-70 180-80s90 40 160 10 70-50 110-70" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+            </pattern></defs>
+            <rect width="400" height="300" fill="url(#ctr)"/>
+            <path d="M40 240c40-40 50-110 110-120s70 50 120 30 50-70 90-80" fill="none" stroke="var(--route)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="40" cy="240" r="7" fill="var(--bg)" stroke="var(--route)" stroke-width="4"/>
+            <circle cx="360" cy="70" r="9" fill="var(--accent)" stroke="var(--fg)" stroke-width="3"/>
+            <rect x="24" y="24" width="150" height="56" rx="8" fill="var(--bg)" stroke="var(--line)"/>
+            <text x="38" y="46" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--fg-3)" letter-spacing="1">CLIMB AHEAD</text>
+            <text x="38" y="68" font-family="Bricolage Grotesque,sans-serif" font-size="18" fill="var(--fg)">4.2 km · 6.1%</text>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="meta"><span>Side project · 0→1</span><span>2024–now</span></div>
+          <h3>Trailhead</h3>
+          <p>A ride-planning app for Indian roads, where the map is only half the story. Surfaces climbs, water stops, and road surface from rider notes, so a Sunday route has fewer surprises.</p>
+          <div class="tags"><span>Research</span><span>Product strategy</span><span>UI</span><span>React Native</span></div>
+          <div class="outcome"><b class="num">1,200</b><span>riders in the private beta, with no marketing spend</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="#contact" aria-label="Field ledger case study">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <rect x="40" y="30" width="320" height="240" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+            <rect x="40" y="30" width="320" height="40" rx="10" fill="var(--bg-3)"/>
+            <rect x="60" y="46" width="90" height="8" rx="4" fill="var(--fg-3)"/>
+            <rect x="60" y="92" width="120" height="10" rx="5" fill="var(--fg)"/>
+            <rect x="60" y="112" width="200" height="7" rx="3.5" fill="var(--line)"/>
+            <g>
+              <rect x="60" y="140" width="280" height="26" rx="5" fill="var(--bg-2)"/><rect x="72" y="149" width="110" height="8" rx="4" fill="var(--fg-3)"/><rect x="280" y="147" width="48" height="12" rx="6" fill="var(--accent)"/>
+              <rect x="60" y="174" width="280" height="26" rx="5" fill="var(--bg-2)"/><rect x="72" y="183" width="80" height="8" rx="4" fill="var(--fg-3)"/>
+              <rect x="60" y="208" width="280" height="26" rx="5" fill="var(--bg-2)"/><rect x="72" y="217" width="130" height="8" rx="4" fill="var(--fg-3)"/>
+            </g>
+            <rect x="60" y="244" width="110" height="14" rx="7" fill="var(--fg)"/>
+            <circle cx="330" cy="50" r="6" fill="var(--route)"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="meta"><span>B2B · Onboarding</span><span>2023</span></div>
+          <h3>Field Ledger onboarding</h3>
+          <p>Expense tracking for sales teams who are never at a desk. Rebuilt the first-run flow around one job: log today's expense in under a minute, on a bad network, with one hand.</p>
+          <div class="tags"><span>Discovery</span><span>PM</span><span>Mobile UX</span><span>Experiments</span></div>
+          <div class="outcome"><b class="num">+34%</b><span>week-one activation after three rounds of testing</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="#contact" aria-label="Design system case study">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <g fill="var(--bg)" stroke="var(--line)">
+              <rect x="36" y="36" width="104" height="104" rx="8"/><rect x="148" y="36" width="104" height="104" rx="8"/><rect x="260" y="36" width="104" height="104" rx="8"/>
+              <rect x="36" y="160" width="104" height="104" rx="8"/><rect x="148" y="160" width="104" height="104" rx="8"/><rect x="260" y="160" width="104" height="104" rx="8"/>
+            </g>
+            <rect x="56" y="76" width="64" height="24" rx="12" fill="var(--fg)"/>
+            <rect x="168" y="76" width="64" height="24" rx="12" fill="var(--bg)" stroke="var(--fg)" stroke-width="2"/>
+            <rect x="280" y="56" width="64" height="64" rx="8" fill="var(--accent)"/>
+            <rect x="56" y="188" width="64" height="8" rx="4" fill="var(--fg)"/><rect x="56" y="204" width="48" height="6" rx="3" fill="var(--fg-3)"/><rect x="56" y="218" width="56" height="6" rx="3" fill="var(--line)"/>
+            <circle cx="200" cy="212" r="22" fill="var(--route)"/>
+            <rect x="282" y="202" width="60" height="20" rx="4" fill="var(--bg-2)" stroke="var(--line)"/><rect x="290" y="209" width="30" height="6" rx="3" fill="var(--fg-3)"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="meta"><span>Platform · Systems</span><span>2022–23</span></div>
+          <h3>A design system, mid-flight</h3>
+          <p>Built a shared component library and token set while three squads kept shipping. Treated it like a product: a roadmap, adoption metrics, and office hours instead of a mandate.</p>
+          <div class="tags"><span>Design systems</span><span>Tokens</span><span>Adoption</span><span>Docs</span></div>
+          <div class="outcome"><b class="num">62</b><span>components adopted across 3 teams in nine months</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPROACH ===== -->
+<section class="section" id="approach" aria-labelledby="approach-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">How I build from scratch</span>
+      <div>
+        <h2 id="approach-h">A route, not a process diagram.</h2>
+        <p>Every product I've started has followed roughly this line. The order matters, the pace doesn't. Some waypoints take an afternoon, some take a quarter, and I always loop back to the start.</p>
+      </div>
+    </div>
+    <ol class="route" aria-label="Six waypoints">
+      <li class="wp"><div class="k">Waypoint 01</div><h3>Notice</h3><p>Sit with users, support tickets, and my own annoyance. Write down what people do, not what they say they want.</p></li>
+      <li class="wp"><div class="k">Waypoint 02</div><h3>Frame</h3><p>One page: who, what hurts, why now, how we'll know. If I can't write it, we're not ready to design it.</p></li>
+      <li class="wp"><div class="k">Waypoint 03</div><h3>Sketch</h3><p>Paper and ugly wireframes. Ten directions, fast, before falling in love with any of them.</p></li>
+      <li class="wp"><div class="k">Waypoint 04</div><h3>Prototype</h3><p>Something clickable in days, in front of five real people. Cut what nobody touches.</p></li>
+      <li class="wp"><div class="k">Waypoint 05</div><h3>Ship</h3><p>Smallest honest version to a small group. Instrument it. Watch the first-week numbers like a hawk.</p></li>
+      <li class="wp"><div class="k">Waypoint 06</div><h3>Learn</h3><p>What surprised us? Fold it back into the one-pager and ride the loop again.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== OUTSIDE ===== -->
+<section class="section outside" id="outside" aria-labelledby="outside-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Off the screen</span>
+      <div>
+        <h2 id="outside-h">The best product thinking I do happens at 22 km/h.</h2>
+        <p>I ride, I hike, I travel slowly, and I spend as much time outdoors as the calendar allows. Nature is the most ruthless editor I know. Everything unnecessary gets dropped on the climb.</p>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div class="top">
+        <h3>Elevation profile · Yelagiri climb loop</h3>
+        <span class="mono num">84.2 km · 1,120 m climbed · max 1,068 m</span>
+      </div>
+      <svg id="elev" viewBox="0 0 1000 260" aria-label="Elevation profile of the Yelagiri loop ride, rising from about 320 metres to 1,068 metres at kilometre 44 and descending back"></svg>
+      <div class="legend"><span><i></i>Elevation</span><span><i class="a"></i>Summit, 1,068 m</span><span>Hand-drawn from GPS data</span></div>
+    </div>
+
+    <div class="out-grid">
+      <article class="out">
+        <span class="mono">Cycling</span>
+        <h3>Hills are honest.</h3>
+        <p>Road cyclist, mostly early mornings, sometimes stupid distances. Long climbs around the Eastern Ghats and the occasional multi-day tour.</p>
+        <ul class="stat-list num">
+          <li><div class="lab">This year</div><div class="val">4,860<small>km</small></div></li>
+          <li><div class="lab">Climbed</div><div class="val">52,300<small>m</small></div></li>
+          <li><div class="lab">Longest day</div><div class="val">212<small>km</small></div></li>
+          <li><div class="lab">Favourite climb</div><div class="val">Kolli</div></li>
+        </ul>
+      </article>
+      <article class="out">
+        <span class="mono">Travel</span>
+        <h3>Slowly, by road.</h3>
+        <p>I prefer one place for two weeks over six places in one. Places that have changed how I think about scale, silence, and systems:</p>
+        <ul class="places">
+          <li><span>Spiti Valley, Himachal</span><span class="coord">32.25°N 78.03°E</span></li>
+          <li><span>Munnar, Western Ghats</span><span class="coord">10.09°N 77.06°E</span></li>
+          <li><span>Mawlynnong, Meghalaya</span><span class="coord">25.20°N 91.92°E</span></li>
+          <li><span>Hampi, Karnataka</span><span class="coord">15.34°N 76.46°E</span></li>
+          <li><span>Leh, Ladakh</span><span class="coord">34.16°N 77.58°E</span></li>
+        </ul>
+      </article>
+      <article class="out">
+        <span class="mono">Field notes</span>
+        <h3>What the outdoors keeps teaching me.</h3>
+        <ul class="notes">
+          <li><b>Trails are great onboarding.</b> A good trail never explains itself. It just makes the next step obvious.</li>
+          <li><b>Gearing beats power.</b> The right ratio for the gradient wins. The right scope for the team does too.</li>
+          <li><b>Weather is a stakeholder.</b> You plan around it and still carry a jacket.</li>
+          <li><b>Pack light, carry a repair kit.</b> Ship small, keep the ability to fix things fast.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESIGN NOTES ===== -->
+<section class="section" id="notes" aria-labelledby="notes-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Design enthusiasm</span>
+      <div>
+        <h2 id="notes-h">Things I keep coming back to.</h2>
+        <p>A short list of objects, ideas, and people that shape how I look at a screen. None of them are software.</p>
+      </div>
+    </div>
+    <div class="likes">
+      <div class="like"><div class="k">Object</div><h3>Topographic maps</h3><p>Dense, layered, and still readable at a glance. The best information design ever made for a pocket.</p></div>
+      <div class="like"><div class="k">Idea</div><h3>Rams' ten principles</h3><p>"As little design as possible" is a product strategy, not just an aesthetic.</p></div>
+      <div class="like"><div class="k">Object</div><h3>Bicycle frame geometry</h3><p>Change one angle by a degree and the whole ride changes. Systems thinking you can feel in your hands.</p></div>
+      <div class="like"><div class="k">Craft</div><h3>Japanese stationery</h3><p>Paper weight, line spacing, cap colour. Every tiny decision made on purpose.</p></div>
+      <div class="like"><div class="k">Type</div><h3>Variable fonts</h3><p>One file, infinite voices. The page you're reading leans on them.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div>
+      <h2 id="contact-h">Have a blank page? <em>Let's fill it.</em></h2>
+      <p>I'm open to early-stage product work, design leadership roles that stay close to the craft, and long rides with good conversation. Chennai based, remote friendly.</p>
+      <div class="email">
+        <code id="email-text">hello@vasanthsankar.design</code>
+        <button type="button" id="copy-email">Copy</button>
+      </div>
+    </div>
+    <ul class="links" aria-label="Elsewhere">
+      <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <small>Work history</small></a></li>
+      <li><a href="https://dribbble.com/" target="_blank" rel="noopener">Dribbble <small>Visual bits</small></a></li>
+      <li><a href="https://www.strava.com/" target="_blank" rel="noopener">Strava <small>Rides</small></a></li>
+      <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram <small>Trails &amp; trips</small></a></li>
+      <li><a href="https://read.cv/" target="_blank" rel="noopener">Read.cv <small>Résumé</small></a></li>
+      <li><a href="https://medium.com/" target="_blank" rel="noopener">Writing <small>Notes on building</small></a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Vasanth Sankar · Chennai</span>
+    <span>Set in Bricolage Grotesque, Instrument Sans and IBM Plex Mono · Made by hand</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Topographic contours (value noise + marching squares) ---------- */
+  var cv = document.getElementById('contours');
+  var hero = cv.parentElement;
+  var ctx = cv.getContext('2d');
+  var W=0,H=0,dpr=1, cell=14, t=0, raf=0;
+
+  function hash(x,y){ var n=Math.sin(x*127.1+y*311.7)*43758.5453; return n-Math.floor(n); }
+  function smooth(a){ return a*a*(3-2*a); }
+  function noise(x,y){
+    var xi=Math.floor(x), yi=Math.floor(y), xf=x-xi, yf=y-yi;
+    var a=hash(xi,yi), b=hash(xi+1,yi), c=hash(xi,yi+1), d=hash(xi+1,yi+1);
+    var u=smooth(xf), v=smooth(yf);
+    return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;
+  }
+  function field(x,y,z){
+    return noise(x*0.9+z, y*0.9) *0.6 + noise(x*2.1-z*0.5, y*2.1+z*0.3)*0.3 + noise(x*4.3, y*4.3-z)*0.1;
+  }
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = hero.clientWidth; H = hero.clientHeight;
+    cv.width = W*dpr; cv.height = H*dpr; cv.style.width=W+'px'; cv.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    draw();
+  }
+  function lerp(p1,p2,v1,v2,iso){ var t=(iso-v1)/(v2-v1||1e-6); return [p1[0]+(p2[0]-p1[0])*t, p1[1]+(p2[1]-p1[1])*t]; }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var stroke = getComputedStyle(document.documentElement).getPropertyValue('--contour').trim() || 'rgba(0,0,0,.15)';
+    ctx.strokeStyle = stroke; ctx.lineWidth = 1;
+    var cols = Math.ceil(W/cell)+1, rows = Math.ceil(H/cell)+1, sc = 0.0022;
+    var g = new Float32Array(cols*rows);
+    for (var j=0;j<rows;j++) for (var i=0;i<cols;i++) g[j*cols+i] = field(i*cell*sc*1.6, j*cell*sc*1.6, t);
+    var levels = 9;
+    ctx.beginPath();
+    for (var L=1; L<=levels; L++){
+      var iso = L/(levels+1);
+      for (var j=0;j<rows-1;j++){
+        for (var i=0;i<cols-1;i++){
+          var v0=g[j*cols+i], v1=g[j*cols+i+1], v2=g[(j+1)*cols+i+1], v3=g[(j+1)*cols+i];
+          var idx=(v0>iso?8:0)|(v1>iso?4:0)|(v2>iso?2:0)|(v3>iso?1:0);
+          if(idx===0||idx===15) continue;
+          var x=i*cell,y=j*cell;
+          var p0=[x,y],p1=[x+cell,y],p2=[x+cell,y+cell],p3=[x,y+cell];
+          var top=lerp(p0,p1,v0,v1,iso), right=lerp(p1,p2,v1,v2,iso), bottom=lerp(p3,p2,v3,v2,iso), left=lerp(p0,p3,v0,v3,iso);
+          var segs;
+          switch(idx){
+            case 1: case 14: segs=[[left,bottom]]; break;
+            case 2: case 13: segs=[[bottom,right]]; break;
+            case 3: case 12: segs=[[left,right]]; break;
+            case 4: case 11: segs=[[top,right]]; break;
+            case 5: segs=[[top,left],[bottom,right]]; break;
+            case 6: case 9: segs=[[top,bottom]]; break;
+            case 7: case 8: segs=[[top,left]]; break;
+            case 10: segs=[[top,right],[left,bottom]]; break;
+          }
+          for (var s=0;s<segs.length;s++){ ctx.moveTo(segs[s][0][0],segs[s][0][1]); ctx.lineTo(segs[s][1][0],segs[s][1][1]); }
+        }
+      }
+    }
+    ctx.stroke();
+    // fade contours toward the text so the headline stays readable
+    var grad = ctx.createLinearGradient(0,0,W,0);
+    var bg = getComputedStyle(document.body).backgroundColor;
+    grad.addColorStop(0, bg); grad.addColorStop(0.55, bg.replace(/rgba?\(([^)]+)\)/, function(m,inner){ var p=inner.split(',').slice(0,3).join(','); return 'rgba('+p+',0.35)'; }));
+    grad.addColorStop(1, bg.replace(/rgba?\(([^)]+)\)/, function(m,inner){ var p=inner.split(',').slice(0,3).join(','); return 'rgba('+p+',0)'; }));
+    ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
+  }
+  function tick(){ t += 0.0025; draw(); raf = requestAnimationFrame(tick); }
+  resize();
+  window.addEventListener('resize', function(){ cancelAnimationFrame(raf); resize(); if(!reduce) raf=requestAnimationFrame(tick); });
+  if(!reduce) raf = requestAnimationFrame(tick);
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', draw);
+  new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){cancelAnimationFrame(raf);} else if(!reduce){raf=requestAnimationFrame(tick);} });
+
+  /* ---------- Ride data (metres above sea level, sampled every 2 km) ---------- */
+  var elev = [320,318,325,332,340,352,360,372,388,405,430,468,510,552,598,650,712,768,842,905,968,1036,1068,1052,1010,962,905,850,790,728,662,598,540,486,440,402,372,350,338,330,324,320,318];
+  var totalKm = 84.2;
+
+  /* spark in the bike computer */
+  (function(){
+    var svg = document.getElementById('spark'); if(!svg) return;
+    var w=360,h=56, min=300, max=1100;
+    var pts = elev.map(function(e,i){ return [(i/(elev.length-1))*w, h-4-((e-min)/(max-min))*(h-8)]; });
+    var d = pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' ');
+    svg.innerHTML = '<path d="'+d+' L'+w+' '+h+' L0 '+h+' Z" fill="var(--accent)" opacity=".18"/>'+
+                    '<path d="'+d+'" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>';
+  })();
+
+  /* full elevation profile, drawn to scale; redrawn with a taller viewBox on phones */
+  function drawProfile(){
+    var svg = document.getElementById('elev'); if(!svg) return;
+    var narrow = (svg.parentElement.clientWidth || 1000) < 640;
+    var W = narrow ? 480 : 1000, H = narrow ? 300 : 260, fs = narrow ? 13 : 11;
+    var padL = narrow ? 50 : 56, padR=20, padT=28, padB=40;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    var yMin=200, yMax=1200;
+    var x = function(km){ return padL + (km/totalKm)*(W-padL-padR); };
+    var y = function(m){ return padT + (1-(m-yMin)/(yMax-yMin))*(H-padT-padB); };
+    var step = totalKm/(elev.length-1);
+    var pts = elev.map(function(e,i){ return [x(i*step), y(e)]; });
+    var line = pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' ');
+    var area = line+' L'+x(totalKm).toFixed(1)+' '+y(yMin)+' L'+x(0)+' '+y(yMin)+' Z';
+    var mono='IBM Plex Mono,monospace';
+    var out = '';
+    out += '<defs><linearGradient id="ef" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--route)" stop-opacity=".28"/><stop offset="1" stop-color="var(--route)" stop-opacity=".02"/></linearGradient></defs>';
+    (narrow ? [200,600,1000] : [200,400,600,800,1000,1200]).forEach(function(m){
+      out += '<line x1="'+padL+'" x2="'+(W-padR)+'" y1="'+y(m)+'" y2="'+y(m)+'" stroke="var(--line)" stroke-dasharray="2 4"/>';
+      out += '<text x="'+(padL-8)+'" y="'+(y(m)+4)+'" text-anchor="end" font-family="'+mono+'" font-size="'+fs+'" fill="var(--fg-3)">'+m+'</text>';
+    });
+    out += '<text x="'+(padL-8)+'" y="'+(padT-12)+'" text-anchor="end" font-family="'+mono+'" font-size="'+fs+'" fill="var(--fg-3)">m</text>';
+    (narrow ? [0,40,80] : [0,20,40,60,80]).forEach(function(km){
+      out += '<text x="'+x(km)+'" y="'+(H-10)+'" text-anchor="middle" font-family="'+mono+'" font-size="'+fs+'" fill="var(--fg-3)">'+km+' km</text>';
+      out += '<line x1="'+x(km)+'" x2="'+x(km)+'" y1="'+y(yMin)+'" y2="'+(y(yMin)+6)+'" stroke="var(--fg-3)"/>';
+    });
+    out += '<path d="'+area+'" fill="url(#ef)"/>';
+    out += '<path d="'+line+'" fill="none" stroke="var(--route)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+    var mi = elev.indexOf(Math.max.apply(null,elev));
+    var sx = x(mi*step), sy = y(elev[mi]);
+    out += '<line x1="'+sx+'" x2="'+sx+'" y1="'+sy+'" y2="'+y(yMin)+'" stroke="var(--accent)" stroke-dasharray="3 3"/>';
+    out += '<circle cx="'+sx+'" cy="'+sy+'" r="6" fill="var(--accent)" stroke="var(--fg)" stroke-width="2"/>';
+    var label = narrow ? '1,068 m · km '+(mi*step).toFixed(0) : 'Yelagiri top · 1,068 m · km '+(mi*step).toFixed(0);
+    out += '<text x="'+(sx+12)+'" y="'+(sy-2)+'" font-family="'+mono+'" font-size="'+(fs+1)+'" fill="var(--fg)">'+label+'</text>';
+    var best=0,bi=0; for(var i=1;i<elev.length;i++){ var d=elev[i]-elev[i-1]; if(d>best){best=d;bi=i;} }
+    var gx = x((bi-0.5)*step), gy = y((elev[bi]+elev[bi-1])/2);
+    out += '<text x="'+(gx-14)+'" y="'+(gy+4)+'" text-anchor="end" font-family="'+mono+'" font-size="'+fs+'" fill="var(--fg-2)">'+(best/(step*10)).toFixed(1)+'% avg</text>';
+    svg.innerHTML = out;
+  }
+  drawProfile();
+  var pt; window.addEventListener('resize', function(){ clearTimeout(pt); pt=setTimeout(drawProfile,120); });
+
+  /* ---------- copy email ---------- */
+  var btn = document.getElementById('copy-email'), txt = document.getElementById('email-text');
+  if (btn && txt){
+    btn.addEventListener('click', function(){
+      var val = txt.textContent.trim();
+      var done = function(){ btn.textContent='Copied'; setTimeout(function(){ btn.textContent='Copy'; },1600); };
+      var fallback = function(){ var r=document.createRange(); r.selectNodeContents(txt); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent='Selected'; setTimeout(function(){ btn.textContent='Copy'; },1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(val).then(done, fallback); } else { fallback(); }
+    });
+  }
+  var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+})();
+</script>
+<!--BODY-END-->
+</body>
+</html>
